@@ -1,0 +1,52 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.test
+
+# Build outputs
+build/
+dist/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Mobile
+*.apk
+*.aab
+*.ipa
+android/.gradle/
+android/app/build/
+ios/build/
+ios/Pods/
+*.keystore
+!debug.keystore
+
+# Cache
+.cache/
+.parcel-cache/
+.next/
+out/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+*.pem
+.vercel
+.turbo
