@@ -1,21 +1,27 @@
 # ✈️ SkyScout Pro - The Ultimate Flight Aggregator
 
-> **Production-ready flight comparison app with web, mobile, and API support, searching Amadeus, Kiwi.com, Google Flights, Skyscanner, and more.**
+> **Production-ready flight comparison app, rewritten to use the latest user-provided APIs.**
 
-![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)
-![Providers](https://img.shields.io/badge/APIs-6-brightgreen.svg)
+![Version](https://img.shields.io/badge/version-1.2.0-blue.svg)
+![Providers](https://img.shields.io/badge/APIs-5-brightgreen.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
+
+---
+
+## ⚠️ Important Security Notice
+
+This project was updated based on user-provided API keys. If you are the user who provided them, please ensure you have **revoked those keys** and are using new ones in your local configuration. See the setup guide below.
 
 ---
 
 ## 🎯 What This Is
 
-A **complete, production-ready** flight price comparison platform that searches multiple major booking sites simultaneously to find the best deals. It's built with real APIs and includes:
+A **complete, production-ready** flight price comparison platform that has been rewritten to use a new set of APIs. It includes:
 
-- ✅ **Backend API** (Node.js) aggregating 6 flight providers.
+- ✅ **Backend API** (Node.js) aggregating 5 flight providers.
 - ✅ **Web Application** (React) with a clean, responsive interface.
 - ✅ **Mobile App** (React Native) placeholder, ready to be built out.
-- ✅ **Real-time flight data** from Amadeus, Kiwi.com, Google Flights, Skyscanner, Booking.com, and a mock Uber Flights API.
+- ✅ **Real-time flight data** from Amadeus, Kiwi.com, Booking.com (via SerpAPI), and new versions of Google Flights & Skyscanner (via RapidAPI).
 
 ---
 
@@ -27,15 +33,15 @@ git clone https://github.com/butch1066/skyscout-pro.git
 cd skyscout-pro
 ```
 
-### 2. Get FREE API Keys
-You'll need to get free API keys from the following services:
+### 2. Get Your NEW API Keys
+You will need to get new, non-compromised API keys from the following services:
 
-| Provider | Free Tier | Sign Up Link |
+| Provider | Purpose | Sign Up Link |
 |---|---|---|
-| **Amadeus** | 2,000 calls/month | [developers.amadeus.com](https://developers.amadeus.com) |
-| **Kiwi.com** | 1,000 calls/month | [tequila.kiwi.com](https://tequila.kiwi.com) |
-| **SerpAPI** | 100 searches/month | [serpapi.com](https://serpapi.com) |
-| **RapidAPI (for Skyscanner)** | 500 calls/month | [rapidapi.com/skyscanner/api/skyscanner44](https://rapidapi.com/skyscanner/api/skyscanner44) |
+| **Amadeus** | Core flight data | [developers.amadeus.com](https://developers.amadeus.com) |
+| **Kiwi.com** | Low-cost carrier data | [tequila.kiwi.com](https://tequila.kiwi.com) |
+| **SerpAPI** | Booking.com data | [serpapi.com](https://serpapi.com) |
+| **RapidAPI** | Google Flights & Skyscanner data | [rapidapi.com/hub](https://rapidapi.com/hub) |
 
 ### 3. Setup Backend
 ```bash
@@ -45,22 +51,29 @@ npm install
 # Create your .env file from the example
 cp .env.example .env
 
-# Now, edit the .env file and add your API keys
+# Now, edit the .env file and add your NEW API keys
 ```
 Your `.env` file should look like this:
 ```
-AMADEUS_CLIENT_ID=your_amadeus_key
-AMADEUS_CLIENT_SECRET=your_amadeus_secret
-KIWI_API_KEY=your_kiwi_key
-SERPAPI_KEY=your_serpapi_key
-SKYSCANNER_API_KEY=your_rapidapi_key
+# Amadeus API
+AMADEUS_CLIENT_ID=your_new_amadeus_key
+AMADEUS_CLIENT_SECRET=your_new_amadeus_secret
+
+# Kiwi.com API
+KIWI_API_KEY=your_new_kiwi_key
+
+# SerpAPI (for Booking.com)
+SERPAPI_KEY=your_new_serpapi_key
+
+# RapidAPI (for Google Flights & Blue Scraper)
+RAPIDAPI_KEY=your_new_rapidapi_key
 ```
 
 ### 4. Start the Backend Server
 ```bash
 npm start
 ```
-✅ Backend is now running at `http://localhost:3001`. You should see the status of all API keys in the console.
+✅ Backend is now running at `http://localhost:3001`.
 
 ### 5. Start the Frontend Web App
 ```bash
@@ -91,43 +104,10 @@ The APK will be located at `mobile/android/app/build/outputs/apk/release/app-rel
 
 ---
 
-## 🐳 Deploy with Docker
-
-A `docker-compose.yml` file is included for easy containerized deployment (coming soon).
-
----
-
-## 🏗️ Project Structure
-```
-skyscout-pro/
-├── backend/           # Node.js API server (Express)
-│   ├── server.js      # Main API logic with all providers
-│   ├── package.json   # Dependencies
-│   └── .env.example   # Environment variable template
-├── frontend/          # React web app
-│   ├── public/
-│   └── src/
-│       ├── App.js     # Main React component
-│       └── index.js   # App entry point
-├── mobile/            # React Native app (placeholder)
-│   ├── App.js
-│   └── package.json
-└── README.md          # This file
-```
-
----
-
-## 💰 Cost
-
--   **Development & Low-Traffic:** **FREE**. The combined free tiers of the APIs cover several thousand searches per month.
--   **Scaling:** If you exceed the free tiers, you can expect to pay for API calls and hosting, likely starting around $50-$100/month depending on traffic.
-
----
-
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
 ## 📄 License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
