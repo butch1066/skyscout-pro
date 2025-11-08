@@ -9,12 +9,13 @@ const SourceLogo = ({ source }) => {
   const logos = {
     'Amadeus': 'https://icdn.kiwi.com/airlines/64/AM.png',
     'Kiwi.com': 'https://icdn.kiwi.com/airlines/64/KK.png',
-    'Google Flights': 'https://www.gstatic.com/travel-frontend/images/travel_logo_200.png',
-    'Skyscanner': 'https://www.skyscanner.net/images/favicon.ico',
+    'Google Flights (New)': 'https://www.gstatic.com/travel-frontend/images/travel_logo_200.png',
+    'Blue Scraper': 'https://www.skyscanner.net/images/favicon.ico', // Using Skyscanner logo as it's a Skyscanner scraper
     'Booking.com': 'https://www.booking.com/favicon.ico',
-    'Uber Flights': 'https://www.uber.com/favicon.ico',
   };
-  return <img src={logos[source]} alt={source} className="source-logo" />;
+  // Fallback for sources without a specific logo
+  const defaultLogo = 'https://www.gstatic.com/images/branding/product/1x/google_cloud_48dp.png';
+  return <img src={logos[source] || defaultLogo} alt={source} className="source-logo" title={source} />;
 };
 
 const ResultCard = ({ flight }) => (
